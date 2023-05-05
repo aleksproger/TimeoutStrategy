@@ -7,6 +7,7 @@ let package = Package(
     name: "TimeoutStrategy",
     products: [
         .library(name: "TimeoutStrategy", targets: ["TimeoutStrategy"]),
+        .library(name: "TimeoutStrategyTestKit", targets: ["TimeoutStrategyTestKit"]),
     ],
     targets: [
         .target(name: "TimeoutStrategy"),
