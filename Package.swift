@@ -10,5 +10,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "TimeoutStrategy"),
+        .target(name: "TimeoutStrategyTestKit", dependencies: ["TimeoutStrategy"]),
     ]
 )
