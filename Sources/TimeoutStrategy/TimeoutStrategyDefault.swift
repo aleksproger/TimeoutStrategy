@@ -1,20 +1,20 @@
 import Foundation
 
-final class TimeoutStrategyDefault<R>: TimeoutStrategy {   
-    typealias BlockResult = R
-    typealias TimerCompletion = (Timer) -> Void
+public final class TimeoutStrategyDefault<R>: TimeoutStrategy {   
+    public typealias BlockResult = R
+    public typealias TimerCompletion = (Timer) -> Void
 
     private let timeout: Int
     private let makeTimer: (@escaping TimerCompletion) -> Timer
     private let makeDispatchSemaphore: () -> DispatchSemaphore
 
-    init(timeout: TimeInterval) {
+    public init(timeout: TimeInterval) {
         self.timeout = Int(timeout)
         self.makeTimer = { completion in Timer.scheduledTimer(withTimeInterval: timeout, repeats: false, block: completion) }
         self.makeDispatchSemaphore = { DispatchSemaphore(value: 0) }
     }
 
-    func execute(
+    public func execute(
         _ asyncBlock: @escaping (@escaping (Result<BlockResult, Error>) -> Void) -> Void
     ) -> Result<BlockResult, Error> {
         let semaphore = makeDispatchSemaphore()
@@ -32,7 +32,7 @@ final class TimeoutStrategyDefault<R>: TimeoutStrategy {
         return result
     }
 
-    func execute(
+    public func execute(
         _ asyncBlock: @escaping (@escaping (Result<BlockResult, Error>) -> Void) -> Void,
         completion: @escaping (Result<BlockResult, Error>) -> Void
     ) {
