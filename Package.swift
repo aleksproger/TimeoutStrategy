@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "TimeoutStrategy",
+    name: "timeout-strategy",
     products: [
         .library(name: "TimeoutStrategy", targets: ["TimeoutStrategy"]),
         .library(name: "TimeoutStrategyTestKit", targets: ["TimeoutStrategyTestKit"]),
